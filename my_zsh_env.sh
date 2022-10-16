@@ -27,7 +27,7 @@ else
     tmp=$(mktemp -d)
     curl -L -o $tmp/chroma.tar.gz https://github.com/alecthomas/chroma/releases/download/v2.3.0/chroma-2.3.0-linux-amd64.tar.gz
     tar -xf $tmp/chroma.tar.gz -C $tmp
-    cp $tmp/chroma /usr/local/bin/
+    sudo cp $tmp/chroma /usr/local/bin/
 fi
 
 touch ~/.zshrc
