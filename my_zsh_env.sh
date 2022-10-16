@@ -34,7 +34,8 @@ rm -rf ~/.oh-my-zsh/
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
+#fix grou perms
+chmod g-w -R ~/.oh-my-zsh
 #install configs
 zshv=$(zsh -c "echo $ZSH_VERSION")
 if [ $(echo "${zshv}\n5.1"|sort|head -1) != "${zshv}" ]; then 
