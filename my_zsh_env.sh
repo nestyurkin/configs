@@ -7,10 +7,10 @@ fi
 lsb_dist="$(echo "$lsb_dist" | tr '[:upper:]' '[:lower:]')"
 case "$lsb_dist" in
     ubuntu|debian|raspbian)
-        sudo apt install -y zsh git python-pip
+        sudo apt install -y zsh git
     ;;
     centos|rhel|sles|almalinux)
-        sudo yum install -y zsh git python-pip
+        sudo yum install -y zsh git
     ;;
     *)
         echo Unknown distro
@@ -19,6 +19,17 @@ case "$lsb_dist" in
 esac
 
 sudo pip install Pygments
+pygm=$(pygmentize -V|grep -i Pygments)
+if [ -n "$pygm" ]; then
+    echo "Found Pygments"    
+else
+    echo Install Chroma
+    tmp=$(mktemp -d)
+    curl -L -o $tmp/chroma.tar.gz https://github.com/alecthomas/chroma/releases/download/v2.3.0/chroma-2.3.0-linux-amd64.tar.gz
+    tar -xf $tmp/chroma.tar.gz -C $tmp
+    cp $tmp/chroma /usr/local/bin/
+fi
+
 touch ~/.zshrc
 isldap=$(cat /etc/passwd | grep $USER)
 if [ -n "$isldap" ]; then
