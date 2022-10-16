@@ -33,7 +33,7 @@ fi
 touch ~/.zshrc
 isldap=$(cat /etc/passwd | grep $USER)
 if [ -n "$isldap" ]; then
-    sudo -k chsh -s /bin/zsh "$USER"
+    sudo usermod --shell /bin/zsh "$USER"
 else
     curl -L -o ~/.bashrc https://raw.githubusercontent.com/nestyurkin/configs/main/.bashrc
 fi
