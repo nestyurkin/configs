@@ -20,7 +20,9 @@ esac
 
 touch ~/.zshrc
 sudo -k chsh -s /bin/zsh "$USER"
-
+#cleanup
+rm ~/.p10k.zsh ~/.zshrc
+rm -rf ~/.oh-my-zsh/
 #install plugins & theme
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
