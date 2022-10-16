@@ -18,6 +18,7 @@ case "$lsb_dist" in
     ;;
 esac
 
+pip install Pygments
 touch ~/.zshrc
 sudo -k chsh -s /bin/zsh "$USER"
 #cleanup
