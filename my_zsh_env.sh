@@ -32,10 +32,17 @@ rm ~/.p10k.zsh ~/.zshrc
 rm -rf ~/.oh-my-zsh/
 #install plugins & theme
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
 #install configs
-curl -L -o ~/.p10k.zsh https://raw.githubusercontent.com/nestyurkin/configs/main/.p10k.comp.zsh
-curl -L -o ~/.zshrc https://raw.githubusercontent.com/nestyurkin/configs/main/.zshrc
+if  [[ $ZSH_VERSION == (5.<1->*|<6->.*) ]]; then
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    curl -L -o ~/.p10k.zsh https://raw.githubusercontent.com/nestyurkin/configs/main/.p10k.comp.zsh
+    curl -L -o ~/.zshrc https://raw.githubusercontent.com/nestyurkin/configs/main/.zshrc
+else 
+    curl -L -o ~/.zshrc https://raw.githubusercontent.com/nestyurkin/configs/main/.zshrc_old
+fi
+
+
 
