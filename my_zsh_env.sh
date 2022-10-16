@@ -46,8 +46,8 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 #install configs
-echo $(zsh --version) | cut -d' ' -f 2
-if [ $(echo -e "${zshv[1]}\n5.1"|sort -V|head -1) != "${zshv[1]}" ]; then 
+zshv=$(zsh --version | cut -d' ' -f 2)
+if [ $(echo -e "${zshv}\n5.1"|sort -V|head -1) != "${zshv}" ]; then 
     echo "ZSH >=5.1"
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
     curl -L -o ~/.p10k.zsh https://raw.githubusercontent.com/nestyurkin/configs/main/.p10k.comp.zsh
