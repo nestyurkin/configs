@@ -7,10 +7,10 @@ fi
 lsb_dist="$(echo "$lsb_dist" | tr '[:upper:]' '[:lower:]')"
 case "$lsb_dist" in
     ubuntu|debian|raspbian)
-        sudo apt install -y zsh git
+        sudo apt install -y zsh git python-pip
     ;;
     centos|rhel|sles|almalinux)
-        sudo yum install -y git zsh
+        sudo yum install -y zsh git python-pip
     ;;
     *)
         echo Unknown distro
@@ -18,9 +18,15 @@ case "$lsb_dist" in
     ;;
 esac
 
-pip install Pygments
+sudo pip install Pygments
 touch ~/.zshrc
-sudo -k chsh -s /bin/zsh "$USER"
+isldap=$(cat /etc/passwd | grep $USER)
+if [ -n "$isldap" ]; then
+    sudo -k chsh -s /bin/zsh "$USER"
+else
+    curl -L -o ~/.bashrc https://raw.githubusercontent.com/nestyurkin/configs/main/.bashrc
+fi
+
 #cleanup
 rm ~/.p10k.zsh ~/.zshrc
 rm -rf ~/.oh-my-zsh/
@@ -32,3 +38,4 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 #install configs
 curl -L -o ~/.p10k.zsh https://raw.githubusercontent.com/nestyurkin/configs/main/.p10k.comp.zsh
 curl -L -o ~/.zshrc https://raw.githubusercontent.com/nestyurkin/configs/main/.zshrc
+
