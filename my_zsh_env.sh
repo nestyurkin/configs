@@ -35,7 +35,7 @@ isldap=$(cat /etc/passwd | grep $USER)
 if [ -n "$isldap" ]; then
     sudo usermod --shell /bin/zsh "$USER"
 else
-    curl --fsSL -o ~/.bashrc https://raw.githubusercontent.com/nestyurkin/configs/main/.bashrc
+    curl -fsSL -o ~/.bashrc https://raw.githubusercontent.com/nestyurkin/configs/main/.bashrc
 fi
 
 #cleanup
