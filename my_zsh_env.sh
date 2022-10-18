@@ -79,5 +79,5 @@ else
 fi
 #fix group perms
 chmod g-w -R ~/.oh-my-zsh
-
+compaudit | xargs chmod g-w,o-w
 zsh
