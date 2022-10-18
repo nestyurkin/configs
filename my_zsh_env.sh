@@ -11,13 +11,20 @@ case "$lsb_dist" in
         sudo apt install -y zsh git
     ;;
     centos|rhel|sles|almalinux)
-        sudo yum install -y  git
-        if [ $ver_id == "7"]; then
+        sudo yum install -y git
+        if [[ $ver_id == "7" ]]; then
             if [ -f "/usr/bin/zsh" ]; then 
-                sudo yum remove -y zsh
+                if [ ! "$(zsh -c '[[ $ZSH_VERSION == (5.<1->*|<6->.*) ]] || echo oldzsh')" ]; then 
+                    echo "ZSH >=5.1"
+                else 
+                    echo Installing ZSH 5.1 from RPM
+                    sudo yum remove -y zsh
+                    sudo rpm -i http://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/zsh-5.1-1.gf.el7.x86_64.rpm
+                fi
+            else 
+                echo Installing ZSH 5.1 from RPM
+                sudo rpm -i http://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/zsh-5.1-1.gf.el7.x86_64.rpm
             fi
-            echo Installing ZSH 5.1 from RPM
-            sudo rpm -i http://mirror.ghettoforge.org/distributions/gf/el/7/plus/x86_64/zsh-5.1-1.gf.el7.x86_64.rpm
         else 
             sudo yum install -y zsh
         fi
