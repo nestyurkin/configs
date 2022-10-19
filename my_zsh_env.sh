@@ -79,4 +79,6 @@ else
 fi
 #fix group perms
 chmod g-w -R ~/.oh-my-zsh
+echo "Convert BASH history to ZSH"
+cat ~/.bash_history | cut -d' ' -f1- | sort | uniq | xargs -I % echo ": $(date +%s):0;" % >> ~/.zsh_history
 zsh
