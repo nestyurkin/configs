@@ -8,3 +8,4 @@ plugins=(git forklift vscode aliases zsh-autosuggestions zsh-syntax-highlighting
 source $ZSH/oh-my-zsh.sh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+POWERLEVEL9K_DISABLE_GITSTATUS=true
