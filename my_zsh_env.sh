@@ -61,7 +61,7 @@ fi
 
 #cleanup
 echo Remove old configs
-rm ~/.p10k.zsh ~/.zshrc
+rm -r ~/.p10k.zsh ~/.zshrc
 rm -rf ~/.oh-my-zsh/
 #install plugins & theme
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
