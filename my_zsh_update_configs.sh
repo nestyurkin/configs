@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/nestyurkin/configs/main/my_zsh_update_configs.sh)"
+#
 isldap=$(cat /etc/passwd | grep $USER)
 if [ -n "$isldap" ]; then
     sudo usermod --shell /bin/zsh "$USER"

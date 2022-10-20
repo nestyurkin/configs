@@ -1,5 +1,7 @@
 #!/bin/bash
-
+#
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/nestyurkin/configs/main/my_zsh_env.sh)"
+#
 lsb_dist=""
 if [ -r /etc/os-release ]; then
 	lsb_dist="$(. /etc/os-release && echo "$ID")"
